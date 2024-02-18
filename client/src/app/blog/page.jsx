@@ -1,23 +1,19 @@
 import PostCard from "@/components/postCard/PostCard"
 import styles from "./blog.module.scss";
+import { getPosts } from "@/lib/data";
 
-const Blog = () => {
+const Blog = async () => {
+      const posts = await getPosts()
+
       return (
             <div className={styles.container}>
-
-                  <div className={styles.post}>
-                        <PostCard />
-                  </div>
-                  <div className={styles.post}>
-                        <PostCard />
-                  </div>
-                  <div className={styles.post}>
-                        <PostCard />
-                  </div>
-                  <div className={styles.post}>
-                        <PostCard />
-                  </div>
-
+                  {
+                        posts.map((post) => (
+                              <div key={post.id} className={styles.post}>
+                                    <PostCard post={post} />
+                              </div>
+                        ))
+                  }
             </div>
       )
 }
