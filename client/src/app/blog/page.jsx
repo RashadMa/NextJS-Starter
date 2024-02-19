@@ -2,6 +2,11 @@ import PostCard from "@/components/postCard/PostCard"
 import styles from "./blog.module.scss";
 import { getPosts } from "@/lib/data";
 
+export const metadata = {
+      title: "Blog Page",
+      description: "Blog description",
+};
+
 const Blog = async () => {
       const posts = await getPosts()
 
